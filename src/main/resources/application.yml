@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ODMS?createDatabaseIfNotExist=true
+    username: root
+    password: 1234@mySqlNK
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
