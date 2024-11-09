@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "donors")
 public class DonorEntity {
     @Id
-    private int donorId;
+    private String donorId;
 
     @Column(nullable = false)
     private String firstName;
@@ -44,7 +44,7 @@ public class DonorEntity {
     @Column(nullable = false)
     private String postalCode;
 
-    private String religion;
+    private String bloodType;
 
     @Column(nullable = false)
     private LocalDate dateOfRegistration;
@@ -52,4 +52,8 @@ public class DonorEntity {
     @ElementCollection
     @CollectionTable(name = "organ_type", joinColumns = @JoinColumn(name = "donor_id"))
     private Set<OrganType> organTypeList;
+
+    @OneToOne
+    @JoinColumn(name = "login_info_email")
+    private LoginInfoEntity donorLoginInfo;
 }

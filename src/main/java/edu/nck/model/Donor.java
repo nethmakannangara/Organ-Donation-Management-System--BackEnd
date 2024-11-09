@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 public class Donor {
-    private int donorId;
+    private String donorId;
     private String firstName;
     private String lastName;
     private LocalDate dob;
@@ -24,7 +24,7 @@ public class Donor {
     private String city;
     private String province;
     private String postalCode;
-    private String religion;
+    private String bloodType;
 
     private LocalDate dateOfRegistration;
 
