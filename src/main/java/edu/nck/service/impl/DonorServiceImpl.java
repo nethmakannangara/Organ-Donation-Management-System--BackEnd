@@ -24,8 +24,9 @@ public class DonorServiceImpl implements DonorService {
     private ModelMapper mapper = new ModelMapper();
 
     @Override
-    public Donor get(String donorId) {
-        return mapper.map(donorRepository.findById(donorId),Donor.class);
+    public Donor get(String donorEmail) {
+        System.out.println(mapper.map(donorRepository.findByEmail(donorEmail),Donor.class));
+        return mapper.map(donorRepository.findByEmail(donorEmail),Donor.class);
     }
 
     @Override
@@ -45,12 +46,12 @@ public class DonorServiceImpl implements DonorService {
 
     @Override
     public void update(Donor donor) {
-
+        donorRepository.save(mapper.map(donor,DonorEntity.class));
     }
 
     @Override
     public void delete(String donorId) {
-
+        donorRepository.delete(mapper.map(donorId,DonorEntity.class));
     }
 
     //LOGIN-SERVICE//
@@ -74,12 +75,13 @@ public class DonorServiceImpl implements DonorService {
         return false;
     }
 
-    //GENERATE_DONOR-ID//
+    //GENERATE_ID//
     public String generateId(){
         String lastId;
         Iterator<Donor> iterator = getAll().iterator();
         Set<Donor> allDonors = getAll();
         lastId = iterator.next().getDonorId();
+        System.out.println(lastId);
         return String.valueOf(Integer.parseInt(lastId)+ 1);
     }
 }

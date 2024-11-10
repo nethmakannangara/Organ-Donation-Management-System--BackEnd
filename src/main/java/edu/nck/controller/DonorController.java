@@ -1,49 +1,44 @@
 package edu.nck.controller;
-
-import edu.nck.entity.DonorEntity;
 import edu.nck.model.Donor;
 import edu.nck.model.LoginInfo;
 import edu.nck.service.DonorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
-@RequestMapping("/donor")
+@RequestMapping("/donors")
 @RequiredArgsConstructor
 @CrossOrigin
 public class DonorController {
 
     private final DonorService donorService;
 
-    @GetMapping("/get")
-    public Donor persist(){
-        System.out.println("D001");
-        return donorService.get("D001");
-    }
-
-    @GetMapping("/donors")
-    public List<Donor> getAll(){
-        return (List<Donor>) donorService.getAll();
+    @GetMapping("/{donorEmail}")
+    public Donor persist(@PathVariable String donorEmail){
+        System.out.println(donorService.get(donorEmail));
+        return donorService.get(donorEmail);
     }
 
     @GetMapping
-    public String test(){
-        return "API Working";
+    public Set<Donor> getAll(){
+        return donorService.getAll();
     }
 
     @PostMapping("/register")
-    public void save(@RequestBody Donor donor){
+    public void register(@RequestBody Donor donor){
         donorService.save(donor);
     }
 
+    //UPDATE//
     @PutMapping
     public void update(@RequestBody Donor donor){
         donorService.update(donor);
     }
 
-    @DeleteMapping("/donor?donorId")
+    //DELETE//
+    @DeleteMapping("/{donorId}")
     public void delete(@RequestParam String donorId) {
         donorService.delete(donorId);
     }
@@ -54,9 +49,10 @@ public class DonorController {
         return donorService.register(loginInfo.getEmail(),loginInfo.getPassword());
     }
 
-    //GENERATE_ID//
-    @GetMapping("/generateId")
-    public void generateId(){
-        donorService.generateId();
+    //GET_DONOR_ID//
+    @GetMapping("/generate-id")
+    public String generateId(){
+        return donorService.generateId();
     }
+
 }
