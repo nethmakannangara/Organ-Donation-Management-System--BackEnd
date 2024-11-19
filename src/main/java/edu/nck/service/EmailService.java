@@ -28,7 +28,7 @@ public class EmailService {
         String verificationCode = generateVerificationCode();
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("yibifa5961@opposir.com");
+        message.setFrom("linklife895@gmail.com");
         message.setTo(email);
         message.setSubject("Email Verification Code");
         message.setText("Your verification code is: "+verificationCode);

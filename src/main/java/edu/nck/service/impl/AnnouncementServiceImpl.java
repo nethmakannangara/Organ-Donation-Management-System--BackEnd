@@ -33,4 +33,19 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     public void create(Announcement announcement) {
         announcementRepository.save(mapper.map(announcement,AnnouncementEntity.class));
     }
+
+    @Override
+    public void delete(String announcementId) {
+        announcementRepository.delete(mapper.map(announcementId,AnnouncementEntity.class));
+    }
+
+    @Override
+    public void update(Announcement announcement) {
+        announcementRepository.save(mapper.map(announcement,AnnouncementEntity.class));
+    }
+
+    @Override
+    public Announcement get(String announcementId) {
+        return mapper.map(announcementRepository.findById(announcementId),Announcement.class);
+    }
 }

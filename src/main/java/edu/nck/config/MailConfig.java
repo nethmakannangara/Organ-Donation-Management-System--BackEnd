@@ -12,10 +12,10 @@ public class MailConfig {
 
     public JavaMailSender javaMailSender(){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.example.com");
+        mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("linklife895@gmail.com");
-        mailSender.setPassword("linkLife@iCET110");
+        mailSender.setPassword("");
         mailSender.setJavaMailProperties(getMailProperties());
         return mailSender;
     }

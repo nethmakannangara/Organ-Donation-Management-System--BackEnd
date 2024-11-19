@@ -7,11 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Announcement {
-    private String announcementId;
-    private String description;
-    private String age;
-    private String organ;
-    private String status;
+public class Patient {
     private String patientId;
+    private String name;
+    private String age;
+    private String bloodType;
+    private String organ;
 }
