@@ -10,8 +10,9 @@ import lombok.*;
 public class PatientEntity {
     @Id
     private String patientId;
-    private String name;
-    private String age;
+    private String firstName;
+    private String LastName;
+    private String address;
     private String bloodType;
     private String organ;
 

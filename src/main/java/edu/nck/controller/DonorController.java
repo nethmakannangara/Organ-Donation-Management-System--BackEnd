@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/donors")
+@RequestMapping("/donor")
 @RequiredArgsConstructor
 @CrossOrigin
 public class DonorController {
@@ -21,7 +21,7 @@ public class DonorController {
         return donorService.get(donorEmail);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public Set<Donor> getAll(){
         return donorService.getAll();
     }
@@ -43,11 +43,11 @@ public class DonorController {
         donorService.delete(donorId);
     }
 
-    //LOGIN_CONTROLLER//
-    @PostMapping("login")
-    public boolean loginRegister(@RequestBody LoginInfo loginInfo){
-        return donorService.register(loginInfo.getEmail(),loginInfo.getPassword());
-    }
+//    //LOGIN_CONTROLLER//
+//    @PostMapping("login")
+//    public boolean loginRegister(@RequestBody LoginInfo loginInfo){
+//        return donorService.register(loginInfo.getEmail(),loginInfo.getPassword());
+//    }
 
     //GET_DONOR_ID//
     @GetMapping("/generate-id")

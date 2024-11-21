@@ -25,7 +25,6 @@ public class DonorServiceImpl implements DonorService {
 
     @Override
     public Donor get(String donorEmail) {
-        System.out.println(mapper.map(donorRepository.findByEmail(donorEmail),Donor.class));
         return mapper.map(donorRepository.findByEmail(donorEmail),Donor.class);
     }
 
@@ -52,27 +51,6 @@ public class DonorServiceImpl implements DonorService {
     @Override
     public void delete(String donorId) {
         donorRepository.delete(mapper.map(donorId,DonorEntity.class));
-    }
-
-    //LOGIN-SERVICE//
-    @Override
-    public boolean register(String email, String password) {
-        return checkValidEmail(email);
-    }
-
-    //CHECK_VALID_EMAIL//
-    private boolean checkValidEmail(String email){
-        Pattern emailPattern = Pattern.compile("[\\W]+");
-        Matcher matcher = emailPattern.matcher(email);
-
-        while (matcher.find()){
-            if(matcher.group().equals("@")){
-                while (matcher.find()){
-                    if (matcher.group().equals("."))return true;
-                }
-            }
-        }
-        return false;
     }
 
     //GENERATE_ID//

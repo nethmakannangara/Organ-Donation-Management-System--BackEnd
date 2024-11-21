@@ -4,11 +4,11 @@ import edu.nck.model.Announcement;
 import edu.nck.service.AnnouncementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin
+@CrossOrigin()
 @RequestMapping("/announcement")
 public class AnnouncementController {
 
@@ -20,7 +20,7 @@ public class AnnouncementController {
     }
 
     @GetMapping("/{announcementId}")
-    public Announcement get(@RequestParam String announcementId){
+    public Announcement get(@PathVariable String announcementId){
         return announcementService.get(announcementId);
     }
 

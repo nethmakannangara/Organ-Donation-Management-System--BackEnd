@@ -17,8 +17,6 @@ public interface DonorService {
 
     void delete(String donorId);
 
-    boolean register(String email, String password);
-
     String generateId();
 
 }
