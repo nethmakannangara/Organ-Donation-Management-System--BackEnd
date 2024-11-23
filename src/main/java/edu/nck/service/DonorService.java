@@ -19,4 +19,5 @@ public interface DonorService {
 
     String generateId();
 
+    boolean sendDonorInfoToHospital(String donorEmail, String donorFirstName, String donorLastName, String donorPhone, String donorBloodType, String patientFirstName, String patientLastName, String patientAge, String patientOrgan, String patientBloodType);
 }

@@ -21,11 +21,11 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean register(LoginInfo loginInfo) {
         if(checkValidEmail(loginInfo.getEmail())){
-//            LoginInfoEntity savedEntity = loginRepository.save(mapper.map(loginInfo,LoginInfoEntity.class));
+            LoginInfoEntity savedEntity = loginRepository.save(mapper.map(loginInfo,LoginInfoEntity.class));
 
-//            if (savedEntity != null && savedEntity.getEmail() != null) {
-//                return true;
-//            }
+            if (savedEntity != null && savedEntity.getEmail() != null) {
+                return true;
+            }
         }
         return false;
     }

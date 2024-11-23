@@ -22,6 +22,7 @@ public class LoginController {
 
     @PostMapping()
     public boolean saveInfo(@RequestBody LoginInfo loginInfo){
+        System.out.println(loginInfo);
         return loginService.register(loginInfo);
     }
 }

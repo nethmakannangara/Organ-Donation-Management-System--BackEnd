@@ -1,8 +1,11 @@
 package edu.nck.controller;
 import edu.nck.model.Donor;
+import edu.nck.model.DonorRequest;
 import edu.nck.model.LoginInfo;
 import edu.nck.service.DonorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -54,5 +57,28 @@ public class DonorController {
     public String generateId(){
         return donorService.generateId();
     }
+
+    @PostMapping("/sendDonorInfoToHospital")
+    public ResponseEntity<String> sendDonorInfoToHospital(@RequestBody DonorRequest donorRequest) {
+        boolean isSent = donorService.sendDonorInfoToHospital(
+                donorRequest.getDonorEmail(),
+                donorRequest.getDonorFirstName(),
+                donorRequest.getDonorLastName(),
+                donorRequest.getDonorPhone(),
+                donorRequest.getDonorBloodType(),
+                donorRequest.getPatientFirstName(),
+                donorRequest.getPatientLastName(),
+                donorRequest.getPatientAge(),
+                donorRequest.getPatientOrgan(),
+                donorRequest.getPatientBloodType()
+        );
+
+        if (isSent) {
+            return ResponseEntity.ok("Email sent successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email");
+        }
+    }
+
 
 }
